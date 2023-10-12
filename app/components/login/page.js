@@ -9,14 +9,14 @@ export default function LogIn(){
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            height: "100vh",
-            width: "100vw",
+            height: "10vh",
+            width: "10vw",
             padding: "0 100px",
         }}>
-            <h1>Log In</h1>
-            <Code>npm install @nextui-org/react</Code>
+            <a href="/">
+                <h4>Login</h4>
+            </a>    
         </div>
     )
 }
 
-// export default LogIn;
