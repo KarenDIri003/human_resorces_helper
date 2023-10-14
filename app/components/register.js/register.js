@@ -1,5 +1,6 @@
 export default function Register(){
     return (
+		// LETS USE THIS TO ADD A MODAL WWITH THE REGISTRATION FORM
         <div style={{
             display: "flex",
             flexDirection: "column",
