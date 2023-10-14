@@ -1,10 +1,7 @@
-import { Header } from "./components/header/header"
-import SearchPage from "./components/searchPage/page"
-
+import LandingPage from "./components/LandingPage";
 
 export default function Home() {
-  return <>
-      <Header/>
-      <SearchPage/>
-  </>
+	return <>
+		<LandingPage />
+	</>
 }
