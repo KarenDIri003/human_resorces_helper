@@ -16,6 +16,7 @@ export function Header() {
 				<a className="container-flex_left" href="/">
 					<h2 style={{
 						fontWeight: "bold",
+						color:"#333333",
 					}}>HUMAN RESOURCES HELPER</h2>
 				</a>
 			</div>
