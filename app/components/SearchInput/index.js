@@ -12,10 +12,10 @@ export default function SearchInput() {
 				border: "none",
 				padding: "10px 20px",
 				borderRadius: "15px",
-				fontSize: "14px",
+				fontSize: "16px",
 			}} type="email" placeholder="Search for a candidate" />
 			<button color="primary" style={{
-				fontSize: "14px",
+				fontSize: "16px",
 				padding: "10px 30px",
 				background: "#FFF94C",
 				borderRadius: "10px",
