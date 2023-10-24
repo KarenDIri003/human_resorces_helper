@@ -45,9 +45,6 @@ export default function Register({ open, handleClose }) {
 						label="Full name"
 						variant="outlined"
 						type="text"
-						sx={{
-							
-						}}
 					/>
 					<TextField
 						id="outlined-basic"
