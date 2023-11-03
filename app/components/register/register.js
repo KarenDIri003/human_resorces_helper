@@ -1,8 +1,40 @@
 import { Button, Modal, Stack, TextField, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import GoogleIcon from "@mui/icons-material/Google";
+import { auth } from "../../firebase";
+import { useState } from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 export default function Register({ open, handleClose }) {
+	const [userInfo, setUserInfo] = useState({
+		name: "",
+		email: "",
+		password: "",
+		passwordConfirm: "",
+	});
+
+	// This funtion create a user in Firebase
+	function createUser() {
+		if (userInfo.password === userInfo.passwordConfirm) {
+			console.log("Creando el usuario con email " + userInfo.email);
+			createUserWithEmailAndPassword(auth, userInfo.email, userInfo.password)
+				.then((userCredential) => {
+					// Signed in
+					const user = userCredential.user;
+					// ...
+					console.log("This is the new user!", user);
+				})
+				.catch((error) => {
+					const errorCode = error.code;
+					const errorMessage = error.message;
+					// ..
+					console.error("error", errorCode, errorMessage);
+				});
+		} else {
+			alert("Your password confirmation is incorrect");
+		}
+	}
+
 	return (
 		<Modal
 			open={open}
@@ -45,12 +77,26 @@ export default function Register({ open, handleClose }) {
 						label="Full name"
 						variant="outlined"
 						type="text"
+						value={userInfo.name}
+						onChange={(e) => {
+							setUserInfo({
+								...userInfo,
+								name: e.target.value,
+							});
+						}}
 					/>
 					<TextField
 						id="outlined-basic"
 						label="Email"
 						variant="outlined"
 						type="email"
+						value={userInfo.email}
+						onChange={(e) => {
+							setUserInfo({
+								...userInfo,
+								email: e.target.value,
+							});
+						}}
 					/>
 					<Stack
 						direction={"row"}
@@ -63,12 +109,26 @@ export default function Register({ open, handleClose }) {
 							label="Password"
 							variant="outlined"
 							type="password"
+							value={userInfo.password}
+							onChange={(e) => {
+								setUserInfo({
+									...userInfo,
+									password: e.target.value,
+								});
+							}}
 						/>
 						<TextField
 							id="outlined-basic"
 							label=" Confirm password"
 							variant="outlined"
 							type="password"
+							value={userInfo.passwordConfirm}
+							onChange={(e) => {
+								setUserInfo({
+									...userInfo,
+									passwordConfirm: e.target.value,
+								});
+							}}
 						/>
 					</Stack>
 					<Button
@@ -86,6 +146,7 @@ export default function Register({ open, handleClose }) {
 								background: "#ccc73c",
 							},
 						}}
+						onClick={createUser}
 					>
 						Register
 					</Button>
